@@ -1,0 +1,76 @@
+<%- include('./partials/_header.ejs'); %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-hover mt-5">
+        <thead>
+          <tr class="table-primary">
+            <td scope="row">N°</td>
+            <td scope="row">Nombre</td>
+            <td scope="row">Direccion</td>
+            <td scope="row">Telefono</td>
+            <td scope="row">Acciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %> <% for(var i=0; i< data.length; i++){ %>
+          <tr>
+            <td><%= (i + 1) %></td>
+            <td><%= data[i].name %></td>
+            <td><%= data[i].address %></td>
+            <td><%= data[i].phone %></td>
+            <td>
+              <a href="/delete/<%= data[i].id %>" class="btn btn-danger"
+                >Delete</a
+              >
+              <a href="/update/<%= data[i].id %>" class="btn btn-info"
+                >Update</a
+              >
+            </td>
+          </tr>
+          <% } %> <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5">
+      <form action="/add" method="post">
+        <fieldset>
+          <div class="form-group">
+            <label class="form-label mt-4">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              placeholder="Ingrese el nombre"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mt-4">Direccion</label>
+            <input
+              type="text"
+              class="form-control"
+              name="address"
+              placeholder="Ingrese su direccion"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mt-4">Telefono</label>
+            <input
+              type="number"
+              class="form-control mb-4"
+              name="phone"
+              placeholder="Ingrese su telefono"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">GUARDAR</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/_footer.ejs'); %>

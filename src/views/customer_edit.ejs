@@ -1,0 +1,43 @@
+<%- include('./partials/_header.ejs'); %>
+
+<div class="container">
+  <div class="col-md-5">
+    <form action="/update/<%= data.id%>" method="post">
+      <fieldset>
+        <div class="form-group">
+          <label class="form-label mt-4">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            value="<%= data.name %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label mt-4">Direccion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="address"
+            value="<%= data.address %>"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label mt-4">Telefono</label>
+          <input
+            type="number"
+            class="form-control mb-4"
+            name="phone"
+            value="<%= data.phone %>"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<%- include('./partials/_footer.ejs'); %>
